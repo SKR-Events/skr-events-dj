@@ -1,0 +1,1853 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SKR Events · DJ Événementiel Premium, Mariages · Séminaires · Soirées Privées</title>
+<meta name="description" content="SKR Events, agence de prestations musicales spécialisée dans l'animation d'événements privés et professionnels : mariages, soirées d'entreprise, galas et événements publics. Lille · Reims · Paris."/>
+
+<!-- Polices Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Font Awesome 6 pour les icônes -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+  /* ==========================================================
+     VARIABLES & RESET
+     ========================================================== */
+  :root {
+    --noir: #0A0A0A;
+    --noir-2: #0F0F10;
+    --noir-3: #16161A;
+    --noir-4: #1C1C22;
+    --or: #C9A84C;
+    --or-clair: #E0C56F;
+    --or-fonce: #8E7530;
+    --ivoire: #F5F0E8;
+    --gris-clair: #B5B0A8;
+    --gris: #7A766F;
+    --vert-verifie: #6FB07F;
+    --transition: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--noir);
+    color: var(--ivoire);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Texture grain globale */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+
+  ::selection { background: var(--or); color: var(--noir); }
+
+  /* Typographie commune */
+  .eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--or);
+    margin-bottom: 1.25rem;
+    display: inline-block;
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    color: var(--ivoire);
+  }
+  h2.section-title {
+    font-size: clamp(2rem, 4.8vw, 4rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  h2.section-title .or { color: var(--or); font-weight: 500; }
+  .section-subtitle {
+    font-size: 1.05rem;
+    color: var(--gris-clair);
+    max-width: 620px;
+    margin: 0 auto 4rem;
+    text-align: center;
+  }
+  .section-header { text-align: center; margin-bottom: 4rem; }
+
+  section { padding: 7rem 1.5rem; position: relative; }
+  .container { max-width: 1280px; margin: 0 auto; }
+
+  /* ==========================================================
+     NAVIGATION
+     ========================================================== */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.25rem 2rem;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: rgba(10, 10, 10, 0);
+    border-bottom: 1px solid transparent;
+    transition: all 0.4s var(--transition);
+  }
+  .nav.scrolled {
+    background: rgba(10, 10, 10, 0.85);
+    border-bottom-color: rgba(201, 168, 76, 0.12);
+    padding: 0.9rem 2rem;
+  }
+  .nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ivoire);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    white-space: nowrap;
+  }
+  .nav-logo::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--or);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--or);
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.25rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--ivoire);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    position: relative;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--or); }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 1px;
+    background: var(--or);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s var(--transition);
+  }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  .btn-gold {
+    background: transparent;
+    color: var(--or);
+    border: 1px solid var(--or);
+    padding: 0.85rem 1.75rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s var(--transition);
+  }
+  .btn-gold::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--or);
+    transform: translateX(-101%);
+    transition: transform 0.5s var(--transition);
+    z-index: -1;
+  }
+  .btn-gold:hover {
+    color: var(--noir);
+    border-color: var(--or);
+  }
+  .btn-gold:hover::before { transform: translateX(0); }
+
+  .nav-cta { padding: 0.7rem 1.4rem; font-size: 0.75rem; }
+
+  .hamburger {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--ivoire);
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 110;
+  }
+
+  /* ==========================================================
+     HERO
+     ========================================================== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 8rem 1.5rem 4rem;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(201, 168, 76, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 80%, rgba(201, 168, 76, 0.05) 0%, transparent 50%),
+      linear-gradient(180deg, #050505 0%, #0A0A0A 60%, #050505 100%);
+  }
+
+  /* Placeholder image cinématique avec overlay grain, simulé en CSS */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.45;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 60%, rgba(201,168,76,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 30% 40% at 20% 30%, rgba(255,255,255,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 80% 70%, rgba(201,168,76,0.08) 0%, transparent 60%);
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.6) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.9) 100%);
+  }
+
+  /* Canvas particules */
+  #particles {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 1100px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 1.1rem;
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--or);
+    background: rgba(201, 168, 76, 0.05);
+    margin-bottom: 2.5rem;
+    position: absolute;
+    top: 7rem;
+    left: 2rem;
+    z-index: 4;
+  }
+  .hero-badge .pulse-dot {
+    width: 7px;
+    height: 7px;
+    background: var(--or);
+    border-radius: 50%;
+    animation: pulse-availability 2s infinite;
+  }
+  @keyframes pulse-availability {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.8); }
+    50% { box-shadow: 0 0 0 8px rgba(201, 168, 76, 0); }
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.5rem, 7.5vw, 6.5rem);
+    font-weight: 600;
+    line-height: 1.02;
+    margin-bottom: 2rem;
+    letter-spacing: -0.035em;
+  }
+  .hero h1 .or {
+    color: var(--or);
+    font-weight: 500;
+  }
+  .hero h1 .line {
+    display: block;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: rise 1.2s var(--transition) forwards;
+  }
+  .hero h1 .line:nth-child(1) { animation-delay: 0.2s; }
+  .hero h1 .line:nth-child(2) { animation-delay: 0.5s; }
+  @keyframes rise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-sub {
+    font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+    color: var(--gris-clair);
+    letter-spacing: 0.06em;
+    margin-bottom: 1.2rem;
+    opacity: 0;
+    animation: rise 1.2s var(--transition) 0.8s forwards;
+  }
+
+  .hero-zone {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--or);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: rise 1.2s var(--transition) 1s forwards;
+  }
+  .hero-zone i { margin-right: 0.5rem; opacity: 0.8; }
+
+  .hero-cta {
+    opacity: 0;
+    animation: rise 1.2s var(--transition) 1.2s forwards;
+  }
+
+  /* Scroll indicator */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gris);
+    opacity: 0;
+    animation: fadeIn 1s ease 1.6s forwards;
+  }
+  @keyframes fadeIn { to { opacity: 1; } }
+  .scroll-line {
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(180deg, transparent, var(--or));
+    position: relative;
+    overflow: hidden;
+  }
+  .scroll-line::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: var(--or);
+    animation: scrollDown 2.2s ease-in-out infinite;
+  }
+  @keyframes scrollDown {
+    0% { top: -50%; }
+    100% { top: 100%; }
+  }
+
+  /* ==========================================================
+     BADGES DE RÉASSURANCE
+     ========================================================== */
+  .reassurance {
+    background: var(--noir-2);
+    padding: 5rem 1.5rem;
+    border-top: 1px solid rgba(201, 168, 76, 0.08);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.08);
+  }
+  .badges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2.5rem 2rem;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .badge-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+  .badge-icon {
+    width: 52px;
+    height: 52px;
+    border: 1px solid rgba(201, 168, 76, 0.25);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--or);
+    font-size: 1.1rem;
+    background: rgba(201, 168, 76, 0.04);
+    transition: all 0.4s var(--transition);
+  }
+  .badge-item:hover .badge-icon {
+    border-color: var(--or);
+    background: rgba(201, 168, 76, 0.1);
+    transform: translateY(-3px);
+  }
+  .badge-text {
+    font-size: 0.85rem;
+    color: var(--ivoire);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+    max-width: 220px;
+  }
+
+  /* ==========================================================
+     LOGOS MARQUEE, Bandeau partenaires défilant
+     ========================================================== */
+  .logos-marquee {
+    background: var(--noir-2);
+    padding: 4.5rem 0;
+    border-top: 1px solid rgba(201, 168, 76, 0.06);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.06);
+    overflow: hidden;
+    position: relative;
+  }
+  .logos-viewport {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+  }
+  .logos-track {
+    display: flex;
+    gap: 4rem;
+    width: max-content;
+    animation: marqueeRTL 55s linear infinite;
+    align-items: center;
+    will-change: transform;
+  }
+  .logos-track:hover { animation-play-state: paused; }
+  .logo-item {
+    flex-shrink: 0;
+    height: 70px;
+    min-width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ivoire);
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    letter-spacing: 0.02em;
+    opacity: 0.75;
+    transition: all 0.5s var(--transition);
+    padding: 0 1.75rem;
+    white-space: nowrap;
+  }
+  .logo-item:hover {
+    color: var(--or);
+    opacity: 1;
+  }
+  .logo-item .brand-sub {
+    font-size: 0.55em;
+    letter-spacing: 0.15em;
+    margin-left: 0.35em;
+    opacity: 0.7;
+    font-weight: 400;
+  }
+
+  /* ==========================================================
+     GALERIE PHOTOS, Carrousel défilant compact
+     ========================================================== */
+  .gallery {
+    background: var(--noir);
+    padding: 5rem 0;
+  }
+  .gallery .section-header {
+    margin-bottom: 2.5rem;
+    padding: 0 1.5rem;
+  }
+  .gallery-viewport {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  }
+  .gallery-track {
+    display: flex;
+    gap: 1rem;
+    width: max-content;
+    animation: marqueeRTL 45s linear infinite;
+    will-change: transform;
+  }
+  .gallery-track:hover { animation-play-state: paused; }
+  .gallery-item {
+    flex-shrink: 0;
+    width: 320px;
+    height: 240px;
+    overflow: hidden;
+    background: #16161A;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    position: relative;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s var(--transition), filter 0.5s;
+    filter: brightness(0.88) saturate(0.95);
+    display: block;
+  }
+  .gallery-item:hover img {
+    transform: scale(1.05);
+    filter: brightness(1) saturate(1);
+  }
+  .gallery-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid transparent;
+    transition: border-color 0.4s;
+    pointer-events: none;
+  }
+  .gallery-item:hover::after {
+    border-color: rgba(201, 168, 76, 0.3);
+  }
+
+  /* ==========================================================
+     TÉMOIGNAGES, Marquee défilant
+     ========================================================== */
+  .testimonials {
+    background: var(--noir-2);
+    padding: 8rem 0;
+    overflow: hidden;
+  }
+  .testimonials .section-header { padding: 0 1.5rem; }
+
+  .marquee-viewport {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    /* Masques de fade gauche/droite */
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  }
+  .marquee-track {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    animation: marqueeRTL 60s linear infinite;
+    will-change: transform;
+  }
+  .marquee-track:hover { animation-play-state: paused; }
+  @keyframes marqueeRTL {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .testimonial-card {
+    background: linear-gradient(180deg, rgba(28, 28, 34, 0.6) 0%, rgba(22, 22, 26, 0.4) 100%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(201, 168, 76, 0.15);
+    padding: 2rem 1.75rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s var(--transition);
+    flex-shrink: 0;
+    width: 380px;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+  }
+  .testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: -1.5rem;
+    right: 1rem;
+    font-family: 'Syne', sans-serif;
+    font-size: 7rem;
+    color: var(--or);
+    opacity: 0.08;
+    line-height: 1;
+  }
+  .testimonial-card:hover {
+    border-color: rgba(201, 168, 76, 0.4);
+  }
+  .stars { color: var(--or); font-size: 0.85rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
+  .testimonial-quote {
+    font-family: 'DM Sans', sans-serif;
+    font-style: italic;
+    font-size: 0.98rem;
+    color: var(--ivoire);
+    line-height: 1.6;
+    margin-bottom: 1.75rem;
+    font-weight: 400;
+    flex: 1;
+  }
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(201, 168, 76, 0.1);
+  }
+  .testimonial-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    object-fit: cover;
+    background: linear-gradient(135deg, #2a2a30, #1a1a20);
+    display: block;
+  }
+  .testimonial-meta { flex: 1; min-width: 0; }
+  .testimonial-name {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--ivoire);
+    margin-bottom: 0.15rem;
+  }
+  .testimonial-context {
+    font-size: 0.75rem;
+    color: var(--gris);
+    letter-spacing: 0.02em;
+  }
+  .verified-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.65rem;
+    color: var(--vert-verifie);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 0.85rem;
+    padding: 0.2rem 0.55rem;
+    background: rgba(111, 176, 127, 0.08);
+    border: 1px solid rgba(111, 176, 127, 0.2);
+    border-radius: 100px;
+    width: fit-content;
+  }
+
+  /* ==========================================================
+     POURQUOI ME CHOISIR
+     ========================================================== */
+  .why {
+    background: var(--noir);
+    padding: 5rem 1.5rem;
+  }
+  .why .section-header { margin-bottom: 2.5rem; }
+  .why .section-subtitle { margin-bottom: 0; }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .why-card {
+    padding: 1.75rem 1.5rem;
+    border: 1px solid rgba(201, 168, 76, 0.1);
+    background: linear-gradient(180deg, rgba(20, 20, 24, 0.4), rgba(15, 15, 17, 0.4));
+    transition: all 0.5s var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .why-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--or), transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .why-card:hover {
+    border-color: rgba(201, 168, 76, 0.4);
+    transform: translateY(-3px);
+    background: linear-gradient(180deg, rgba(28, 28, 34, 0.6), rgba(20, 20, 24, 0.6));
+  }
+  .why-card:hover::after { opacity: 1; }
+  .why-icon {
+    font-size: 1.5rem;
+    color: var(--or);
+    margin-bottom: 0.85rem;
+    display: inline-block;
+  }
+  .why-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--ivoire);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.015em;
+  }
+  .why-card p {
+    font-size: 0.85rem;
+    color: var(--gris-clair);
+    line-height: 1.5;
+  }
+
+  /* ==========================================================
+     PARTENAIRES
+     ========================================================== */
+  .partners {
+    background: var(--noir-2);
+    padding: 7rem 1.5rem;
+    border-top: 1px solid rgba(201, 168, 76, 0.06);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.06);
+  }
+  .partners-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+  .partner-logo {
+    aspect-ratio: 2.2 / 1;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.015);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gris);
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    text-align: center;
+    transition: all 0.4s var(--transition);
+    filter: grayscale(1);
+    padding: 1rem;
+  }
+  .partner-logo:hover {
+    color: var(--or);
+    border-color: rgba(201, 168, 76, 0.35);
+    background: rgba(201, 168, 76, 0.04);
+    filter: grayscale(0);
+  }
+  .partner-logo i { margin-right: 0.5rem; opacity: 0.8; }
+
+  /* ==========================================================
+     CONTACT FORM
+     ========================================================== */
+  .contact {
+    background: var(--noir);
+    padding: 8rem 1.5rem;
+  }
+  .contact-form {
+    max-width: 1080px;
+    margin: 0 auto;
+    background: linear-gradient(180deg, rgba(22, 22, 26, 0.7), rgba(15, 15, 17, 0.7));
+    border: 1px solid rgba(201, 168, 76, 0.15);
+    padding: 3.5rem clamp(1.5rem, 4vw, 3.5rem);
+    position: relative;
+  }
+  .contact-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 1px;
+    background: var(--or);
+  }
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 2rem;
+  }
+  .form-group {
+    position: relative;
+    margin-bottom: 0.5rem;
+  }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-group label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--or);
+    margin-bottom: 0.6rem;
+  }
+  .form-group label .req { color: var(--or-clair); margin-left: 0.15rem; }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    width: 100%;
+    background: rgba(10, 10, 10, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--ivoire);
+    padding: 0.95rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+    border-radius: 0;
+  }
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    outline: none;
+    border-color: var(--or);
+    background: rgba(201, 168, 76, 0.03);
+  }
+  .form-input.invalid,
+  .form-select.invalid,
+  .form-textarea.invalid {
+    border-color: #c25a5a;
+  }
+  .form-input.valid {
+    border-color: rgba(111, 176, 127, 0.5);
+  }
+  .form-textarea {
+    min-height: 130px;
+    resize: vertical;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .form-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23C9A84C' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+  }
+  .form-input::placeholder, .form-textarea::placeholder { color: var(--gris); font-style: italic; }
+
+  .checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.6rem 0.75rem;
+  }
+
+  /* Disposition horizontale : label question à gauche, options à droite */
+  .form-row-horizontal {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 1.5rem 2rem;
+    align-items: center;
+    padding: 0.5rem 0;
+  }
+  .form-row-horizontal > label {
+    margin-bottom: 0;
+    align-self: center;
+  }
+  .check-pill, .radio-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.65rem 0.95rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(10, 10, 10, 0.4);
+    color: var(--ivoire);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    user-select: none;
+  }
+  .check-pill:hover, .radio-pill:hover {
+    border-color: rgba(201, 168, 76, 0.4);
+  }
+  .check-pill input, .radio-pill input { display: none; }
+  .check-pill .check-mark,
+  .radio-pill .check-mark {
+    width: 16px;
+    height: 16px;
+    border: 1px solid rgba(201, 168, 76, 0.4);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+  .radio-pill .check-mark { border-radius: 50%; }
+  .check-pill input:checked ~ .check-mark,
+  .radio-pill input:checked ~ .check-mark {
+    background: var(--or);
+    border-color: var(--or);
+  }
+  .check-pill input:checked ~ .check-mark::before {
+    content: '✓';
+    color: var(--noir);
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+  .radio-pill input:checked ~ .check-mark::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--noir);
+    border-radius: 50%;
+  }
+  .check-pill:has(input:checked),
+  .radio-pill:has(input:checked) {
+    border-color: var(--or);
+    background: rgba(201, 168, 76, 0.06);
+    color: var(--or);
+  }
+
+  .rgpd-row {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--gris-clair);
+    line-height: 1.5;
+    cursor: pointer;
+    user-select: none;
+  }
+  .rgpd-row input { display: none; }
+  .rgpd-row .check-mark {
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgba(201, 168, 76, 0.4);
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    align-self: center;
+  }
+  .rgpd-row span:not(.check-mark) {
+    align-self: center;
+  }
+  .rgpd-row input:checked ~ .check-mark {
+    background: var(--or);
+    border-color: var(--or);
+  }
+  .rgpd-row input:checked ~ .check-mark::before {
+    content: '✓';
+    color: var(--noir);
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .submit-row {
+    grid-column: 1 / -1;
+    margin-top: 1.5rem;
+  }
+  .btn-submit {
+    width: 100%;
+    background: var(--or);
+    color: var(--noir);
+    border: none;
+    padding: 1.15rem 2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-submit:hover {
+    background: var(--or-clair);
+    letter-spacing: 0.3em;
+  }
+  .btn-submit:disabled { opacity: 0.7; cursor: wait; }
+  .btn-submit .loader {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(10, 10, 10, 0.3);
+    border-top-color: var(--noir);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+    display: none;
+  }
+  .btn-submit.loading .loader { display: inline-block; }
+  .btn-submit.loading .btn-text { opacity: 0.7; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .form-success {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    background: rgba(201, 168, 76, 0.04);
+    display: none;
+  }
+  .form-success.visible { display: block; }
+  .form-success i {
+    font-size: 3rem;
+    color: var(--or);
+    margin-bottom: 1.5rem;
+  }
+  .form-success h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .form-success p { color: var(--gris-clair); }
+
+  .field-error {
+    color: #c87a7a;
+    font-size: 0.72rem;
+    margin-top: 0.4rem;
+    letter-spacing: 0.05em;
+    min-height: 1rem;
+  }
+
+  /* ==========================================================
+     FOOTER
+     ========================================================== */
+  footer {
+    background: #050505;
+    padding: 4.5rem 1.5rem 2rem;
+    text-align: center;
+    position: relative;
+  }
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ivoire);
+    margin-bottom: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+  .footer-logo::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: var(--or);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--or);
+  }
+  .footer-zone {
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--or);
+    margin-bottom: 2.5rem;
+  }
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .social-icons a {
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(201, 168, 76, 0.25);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ivoire);
+    text-decoration: none;
+    transition: all 0.3s;
+    font-size: 0.95rem;
+  }
+  .social-icons a:hover {
+    background: var(--or);
+    color: var(--noir);
+    border-color: var(--or);
+    transform: translateY(-3px);
+  }
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .footer-links a {
+    color: var(--gris-clair);
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: color 0.3s;
+    letter-spacing: 0.05em;
+  }
+  .footer-links a:hover { color: var(--or); }
+  .footer-divider {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--or), transparent);
+    margin: 2rem auto;
+  }
+  .footer-tagline {
+    font-family: 'DM Sans', sans-serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 0.9rem;
+    color: var(--gris);
+    letter-spacing: 0.05em;
+  }
+
+  /* ==========================================================
+     REVEAL ANIMATIONS
+     ========================================================== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s var(--transition), transform 1s var(--transition);
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal.delay-1 { transition-delay: 0.1s; }
+  .reveal.delay-2 { transition-delay: 0.2s; }
+  .reveal.delay-3 { transition-delay: 0.3s; }
+  .reveal.delay-4 { transition-delay: 0.4s; }
+  .reveal.delay-5 { transition-delay: 0.5s; }
+
+  /* ==========================================================
+     RESPONSIVE
+     ========================================================== */
+  @media (max-width: 1024px) {
+    .why-grid { grid-template-columns: repeat(2, 1fr); }
+    .partners-grid { grid-template-columns: repeat(3, 1fr); }
+    section { padding: 5rem 1.5rem; }
+    .form-row-horizontal { grid-template-columns: 180px 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav { padding: 1rem 1.25rem; }
+    .nav.scrolled { padding: 0.75rem 1.25rem; }
+    .hamburger { display: block; }
+    .nav-links {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 5, 5, 0.97);
+      backdrop-filter: blur(20px);
+      flex-direction: column;
+      justify-content: center;
+      gap: 2.5rem;
+      transform: translateX(100%);
+      transition: transform 0.5s var(--transition);
+    }
+    .nav-links.open { transform: translateX(0); }
+    .nav-links a { font-size: 1.1rem; }
+    .nav-links .nav-cta { padding: 0.9rem 2rem; font-size: 0.85rem; }
+    .hero-badge { top: 5rem; left: 1.25rem; right: 1.25rem; font-size: 0.6rem; }
+    .why-grid, .form-grid { grid-template-columns: 1fr; }
+    .gallery-item { width: 260px; height: 195px; }
+    .testimonial-card { width: 300px; min-height: 260px; }
+    .partners-grid { grid-template-columns: repeat(2, 1fr); }
+    .contact-form { padding: 2rem 1.25rem; }
+    .badges-grid { gap: 2rem 1rem; }
+    section { padding: 4.5rem 1.25rem; }
+    h2.section-title { font-size: 2.25rem; }
+    .footer-links { gap: 1.25rem; }
+    .form-row-horizontal {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==========================================================
+     NAVIGATION STICKY
+     ========================================================== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#accueil" class="nav-logo">SKR<span style="font-style:normal; color:var(--or); margin-left:2px;">.</span>Events</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#accueil" class="nav-link-item">Accueil</a></li>
+      <li><a href="#galerie" class="nav-link-item">Galerie</a></li>
+      <li><a href="#avis" class="nav-link-item">Avis</a></li>
+      <li><a href="#prestations" class="nav-link-item">Prestations</a></li>
+      <li><a href="#contact" class="nav-link-item">Contact</a></li>
+      <li><a href="#contact" class="btn-gold nav-cta">Réserver</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- ==========================================================
+     HERO
+     ========================================================== -->
+<section class="hero" id="accueil">
+  <div class="hero-bg"></div>
+  <canvas id="particles"></canvas>
+
+  <div class="hero-content">
+    <h1>
+      <span class="line">L'expérience sonore</span>
+      <span class="line"><span class="or">qui marque les esprits</span></span>
+    </h1>
+    <p class="hero-sub">SKR Events, Animation musicale premium pour mariages, séminaires &amp; soirées privées</p>
+    <p class="hero-zone"><i class="fa-solid fa-location-dot"></i>Lille · Reims · Paris &amp; région</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-gold">Réserver une date <i class="fa-solid fa-arrow-right" style="font-size:0.7rem;"></i></a>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <span>Découvrir</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ==========================================================
+     BADGES DE RÉASSURANCE
+     ========================================================== -->
+<section class="reassurance">
+  <div class="badges-grid">
+    <div class="badge-item reveal"><div class="badge-icon"><i class="fa-solid fa-headphones"></i></div><div class="badge-text">5 ans d'expérience</div></div>
+    <div class="badge-item reveal delay-1"><div class="badge-icon"><i class="fa-solid fa-globe"></i></div><div class="badge-text">Carrière à l'international</div></div>
+    <div class="badge-item reveal delay-2"><div class="badge-icon"><i class="fa-solid fa-star"></i></div><div class="badge-text">Avis vérifiés, noté 5/5</div></div>
+    <div class="badge-item reveal delay-3"><div class="badge-icon"><i class="fa-solid fa-trophy"></i></div><div class="badge-text">Artiste référencé événements corporate</div></div>
+    <div class="badge-item reveal delay-4"><div class="badge-icon"><i class="fa-solid fa-volume-high"></i></div><div class="badge-text">Matériel professionnel haut de gamme</div></div>
+  </div>
+</section>
+
+<!-- ==========================================================
+     LOGOS PARTENAIRES, Bandeau défilant (remplace destinations)
+     ========================================================== -->
+<section class="logos-marquee">
+  <div class="logos-viewport">
+    <div class="logos-track" id="logosTrack">
+      <!-- Wordmarks clients (à remplacer par les vrais logos quand fournis) -->
+      <div class="logo-item">DECATHLON</div>
+      <div class="logo-item">Leroy Merlin</div>
+      <div class="logo-item">LOSC<span class="brand-sub">LILLE</span></div>
+      <div class="logo-item">Mercedes-Benz</div>
+      <div class="logo-item">BMW</div>
+      <div class="logo-item">Orange</div>
+      <div class="logo-item">L'Oréal</div>
+      <div class="logo-item">Société Générale</div>
+      <div class="logo-item">Veuve Clicquot</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================
+     TÉMOIGNAGES, Bannière défilante
+     ========================================================== -->
+<section class="testimonials" id="avis">
+  <div class="section-header">
+    <span class="eyebrow">Avis Clients</span>
+    <h2 class="section-title">Ce que disent <span class="or">nos clients</span></h2>
+    <p class="section-subtitle">Avis Google vérifiés, noté 5/5 <span style="color:var(--or)">★</span></p>
+  </div>
+
+  <div class="marquee-viewport">
+    <div class="marquee-track" id="testimonialsTrack">
+      <!-- 10 avis Google réels, dupliqués via JS pour le défilement infini -->
+
+      <div class="testimonial-card">
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <p class="testimonial-quote">"Bon DJ et bons services sur mesure. SKR s'adapte au besoin, il s'investit à fond quelque soit la demande, le client, les goûts musicaux..."</p>
+        <div class="testimonial-author">
+          <img class="testimonial-avatar" src="https://ui-avatars.com/api/?name=Hugo+Dervin&background=1c1c22&color=c9a84c&bold=true&size=120&font-size=0.42&length=2" alt="Hugo Dervin" loading="lazy"/>
+          <div class="testimonial-meta">
+            <div class="testimonial-name">Hugo Dervin</div>
+            <div class="testimonial-context">Local Guide · 87 avis</div>
+            <span class="verified-badge"><i class="fa-brands fa-google"></i> Avis Google vérifié</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <p class="testimonial-quote">"Nous sommes plus que satisfaits de DJ SKR. Nous avons sollicité Jules pour notre bal de village. Le rythme de la soirée, l'ambiance, le sérieux et la bonne humeur, tout était parfait ! Merci pour cette soirée plus que réussie !"</p>
+        <div class="testimonial-author">
+          <img class="testimonial-avatar" src="https://ui-avatars.com/api/?name=Elise+Conroux&background=1c1c22&color=c9a84c&bold=true&size=120&font-size=0.42&length=2" alt="Élise Conroux" loading="lazy"/>
+          <div class="testimonial-meta">
+            <div class="testimonial-name">Élise Conroux</div>
+            <div class="testimonial-context">Bal de village · Local Guide</div>
+            <span class="verified-badge"><i class="fa-brands fa-google"></i> Avis Google vérifié</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <p class="testimonial-quote">"Jules est intervenu sur bon nombre de mes événements (soirées extérieures, mariages, anniversaires, soirées d'entreprise) et à chaque fois c'est une véritable réussite !"</p>
+        <div class="testimonial-author">
+          <img class="testimonial-avatar" src="https://ui-avatars.com/api/?name=Martin+Gaillard&background=1c1c22&color=c9a84c&bold=true&size=120&font-size=0.42&length=2" alt="Martin Gaillard" loading="lazy"/>
+          <div class="testimonial-meta">
+            <div class="testimonial-name">Martin Gaillard</div>
+            <div class="testimonial-context">Mariages · Anniversaires · Corporate</div>
+            <span class="verified-badge"><i class="fa-brands fa-google"></i> Avis Google vérifié</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <p class="testimonial-quote">"J'ai eu l'occasion de participer à plusieurs de ses prestations, et j'ai été à chaque fois impressionné par sa capacité à nous ambiancer et à s'adapter à nos préférences. Bravo."</p>
+        <div class="testimonial-author">
+          <img class="testimonial-avatar" src="https://ui-avatars.com/api/?name=Aubin+Massart&background=1c1c22&color=c9a84c&bold=true&size=120&font-size=0.42&length=2" alt="Aubin Massart" loading="lazy"/>
+          <div class="testimonial-meta">
+            <div class="testimonial-name">Aubin Massart</div>
+            <div class="testimonial-context">Prestations multiples</div>
+            <span class="verified-badge"><i class="fa-brands fa-google"></i> Avis Google vérifié</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <p class="testimonial-quote">"Très bon DJ, j'ai pu voir une de ses performances cette année lors de la braderie de Lille et c'était super. Musiques adaptées au public, en y ajoutant sa petite touche personnelle qui fait la différence !"</p>
+        <div class="testimonial-author">
+          <img class="testimonial-avatar" src="https://ui-avatars.com/api/?name=Ambre+Ubycha&background=1c1c22&color=c9a84c&bold=true&size=120&font-size=0.42&length=2" alt="Ambre Ubycha" loading="lazy"/>
+          <div class="testimonial-meta">
+            <div class="testimonial-name">Ambre Ubycha</div>
+            <div class="testimonial-context">Braderie de Lille</div>
+            <span class="verified-badge"><i class="fa-brands fa-google"></i> Avis Google vérifié</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <p class="testimonial-quote">"Nous avons choisi DJ SKR pour assurer l'animation lors d'un événement familial. Ce fut un sans faute : DJ sympathique, professionnel avec du matériel de qualité. Ambiance assurée, super soirée."</p>
+        <div class="testimonial-author">
+          <img class="testimonial-avatar" src="https://ui-avatars.com/api/?name=Pauline+Dufour&background=1c1c22&color=c9a84c&bold=true&size=120&font-size=0.42&length=2" alt="Pauline Dufour" loading="lazy"/>
+          <div class="testimonial-meta">
+            <div class="testimonial-name">Pauline Dufour</div>
+            <div class="testimonial-context">Événement familial</div>
+            <span class="verified-badge"><i class="fa-brands fa-google"></i> Avis Google vérifié</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <p class="testimonial-quote">"Super DJ ! Une prestation de qualité pour une soirée mémorable ! Je recommande !"</p>
+        <div class="testimonial-author">
+          <img class="testimonial-avatar" src="https://ui-avatars.com/api/?name=Pierre+Marseguerra&background=1c1c22&color=c9a84c&bold=true&size=120&font-size=0.42&length=2" alt="Pierre Marseguerra" loading="lazy"/>
+          <div class="testimonial-meta">
+            <div class="testimonial-name">Pierre Marseguerra</div>
+            <div class="testimonial-context">Soirée privée</div>
+            <span class="verified-badge"><i class="fa-brands fa-google"></i> Avis Google vérifié</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <p class="testimonial-quote">"Excellent prestataire, je recommande."</p>
+        <div class="testimonial-author">
+          <img class="testimonial-avatar" src="https://ui-avatars.com/api/?name=Exploressens+Evenements&background=1c1c22&color=c9a84c&bold=true&size=120&font-size=0.42&length=2" alt="Exploressens Événements" loading="lazy"/>
+          <div class="testimonial-meta">
+            <div class="testimonial-name">Exploressens Événements</div>
+            <div class="testimonial-context">Agence partenaire · 16 avis</div>
+            <span class="verified-badge"><i class="fa-brands fa-google"></i> Avis Google vérifié</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <p class="testimonial-quote">"Très bon Disque Jockey pour tout type d'événement (bal, mariage, séminaire) et tout type de musique, beau matos également. Vu plusieurs fois en soirée, bal, mariage et jamais déçu. Je recommande 👌"</p>
+        <div class="testimonial-author">
+          <img class="testimonial-avatar" src="https://ui-avatars.com/api/?name=Quentin+Mouron&background=1c1c22&color=c9a84c&bold=true&size=120&font-size=0.42&length=2" alt="Quentin Mouron" loading="lazy"/>
+          <div class="testimonial-meta">
+            <div class="testimonial-name">Quentin Mouron</div>
+            <div class="testimonial-context">Local Guide · 29 avis</div>
+            <span class="verified-badge"><i class="fa-brands fa-google"></i> Avis Google vérifié</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <p class="testimonial-quote">"5 étoiles bien méritées. Une prestation au top, à l'écoute et professionnelle du début à la fin."</p>
+        <div class="testimonial-author">
+          <img class="testimonial-avatar" src="https://ui-avatars.com/api/?name=Clement+Marquis&background=1c1c22&color=c9a84c&bold=true&size=120&font-size=0.42&length=2" alt="Clément Marquis" loading="lazy"/>
+          <div class="testimonial-meta">
+            <div class="testimonial-name">Clément Marquis</div>
+            <div class="testimonial-context">Avril 2023 · 12 avis</div>
+            <span class="verified-badge"><i class="fa-brands fa-google"></i> Avis Google vérifié</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================
+     POURQUOI ME CHOISIR
+     ========================================================== -->
+<section class="why" id="prestations">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Prestations</span>
+      <h2 class="section-title">Une expérience, pas juste un DJ</h2>
+      <p class="section-subtitle">5 ans de scène. Des centaines de soirées. Un seul objectif : que votre événement soit inoubliable.</p>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon"><i class="fa-solid fa-bullseye"></i></div>
+        <h3>Sur-mesure à 100%</h3>
+        <p>Chaque set est pensé spécifiquement pour votre événement, votre public et vos moments forts.</p>
+      </div>
+      <div class="why-card reveal delay-1">
+        <div class="why-icon"><i class="fa-solid fa-clipboard-list"></i></div>
+        <h3>Accompagnement de A à Z</h3>
+        <p>Brief, repérage technique, construction de playlist, présence sur place, vous êtes guidé à chaque étape.</p>
+      </div>
+      <div class="why-card reveal delay-2">
+        <div class="why-icon"><i class="fa-solid fa-volume-high"></i></div>
+        <h3>Matériel professionnel</h3>
+        <p>Son et éclairage haut de gamme inclus. Régie discrète, installation soignée, finitions impeccables.</p>
+      </div>
+      <div class="why-card reveal delay-3">
+        <div class="why-icon"><i class="fa-regular fa-clock"></i></div>
+        <h3>Ponctualité &amp; fiabilité</h3>
+        <p>Installation anticipée, redondance technique, zéro surprise le jour J. La sérénité fait partie du service.</p>
+      </div>
+      <div class="why-card reveal delay-4">
+        <div class="why-icon"><i class="fa-solid fa-globe"></i></div>
+        <h3>5 ans d'expérience</h3>
+        <p>Une lecture de salle affûtée par des centaines de soirées. Style musical adapté à chaque public, chaque moment.</p>
+      </div>
+      <div class="why-card reveal delay-5">
+        <div class="why-icon"><i class="fa-solid fa-user-secret"></i></div>
+        <h3>Discrétion absolue</h3>
+        <p>Respect total de la confidentialité événementielle. Pas de communication non autorisée, jamais.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================
+     GALERIE, Carrousel défilant photos scénographie
+     ========================================================== -->
+<section class="gallery" id="galerie">
+  <div class="section-header">
+    <span class="eyebrow">Galerie</span>
+    <h2 class="section-title">En <span class="or">scène</span></h2>
+  </div>
+
+  <div class="gallery-viewport">
+    <div class="gallery-track" id="galleryTrack">
+      <div class="gallery-item"><img src="photos/dj-club.jpg" alt="DJ club" loading="lazy"/></div>
+      <div class="gallery-item"><img src="photos/dj-corporate.jpg" alt="DJ corporate" loading="lazy"/></div>
+      <div class="gallery-item"><img src="photos/dj-night.jpg" alt="DJ néon" loading="lazy"/></div>
+      <div class="gallery-item"><img src="photos/dj-beach.jpg" alt="DJ beach" loading="lazy"/></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================
+     FORMULAIRE CONTACT
+     ========================================================== -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Contact</span>
+      <h2 class="section-title">Parlons de votre événement</h2>
+      <p class="section-subtitle">Remplissez ce formulaire, je vous réponds sous 24h.</p>
+    </div>
+
+    <form class="contact-form" id="bookingForm" novalidate>
+      <div class="form-grid">
+
+        <!-- Colonne gauche -->
+        <div class="form-group">
+          <label for="fullname">Prénom &amp; Nom <span class="req">*</span></label>
+          <input type="text" id="fullname" name="fullname" class="form-input" required placeholder="Votre nom complet"/>
+          <div class="field-error" data-for="fullname"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email <span class="req">*</span></label>
+          <input type="email" id="email" name="email" class="form-input" required placeholder="vous@exemple.com"/>
+          <div class="field-error" data-for="email"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Téléphone <span class="req">*</span></label>
+          <input type="tel" id="phone" name="phone" class="form-input" required placeholder="+33 6 ..."/>
+          <div class="field-error" data-for="phone"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="eventType">Type d'événement <span class="req">*</span></label>
+          <select id="eventType" name="eventType" class="form-select" required>
+            <option value="">Sélectionner...</option>
+            <option>Mariage</option>
+            <option>Séminaire d'entreprise</option>
+            <option>Soirée privée</option>
+            <option>Anniversaire</option>
+            <option>Soirée publique / Festival</option>
+            <option>Autre</option>
+          </select>
+          <div class="field-error" data-for="eventType"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="eventDate">Date de l'événement <span class="req">*</span></label>
+          <input type="date" id="eventDate" name="eventDate" class="form-input" required/>
+          <div class="field-error" data-for="eventDate"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="eventLocation">Lieu de l'événement <span class="req">*</span></label>
+          <input type="text" id="eventLocation" name="eventLocation" class="form-input" required placeholder="Ville + salle / domaine"/>
+          <div class="field-error" data-for="eventLocation"></div>
+        </div>
+
+        <!-- Colonne droite -->
+        <div class="form-group">
+          <label for="guests">Nombre d'invités estimé <span class="req">*</span></label>
+          <select id="guests" name="guests" class="form-select" required>
+            <option value="">Sélectionner...</option>
+            <option>Moins de 50</option>
+            <option>50, 100</option>
+            <option>100, 200</option>
+            <option>200, 500</option>
+            <option>+500</option>
+          </select>
+          <div class="field-error" data-for="guests"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="duration">Durée de la prestation <span class="req">*</span></label>
+          <select id="duration" name="duration" class="form-select" required>
+            <option value="">Sélectionner...</option>
+            <option>2h</option>
+            <option>3h</option>
+            <option>4h</option>
+            <option>5h+</option>
+            <option>À définir</option>
+          </select>
+          <div class="field-error" data-for="duration"></div>
+        </div>
+
+        <div class="form-row-horizontal">
+          <label>Matériel son &amp; lumières</label>
+          <div class="checkbox-grid" style="grid-template-columns: repeat(3, 1fr);">
+            <label class="radio-pill"><input type="radio" name="material" value="Oui"/><span class="check-mark"></span>Oui</label>
+            <label class="radio-pill"><input type="radio" name="material" value="Non"/><span class="check-mark"></span>Non</label>
+            <label class="radio-pill"><input type="radio" name="material" value="À discuter"/><span class="check-mark"></span>À discuter</label>
+          </div>
+        </div>
+
+        <div class="form-group full">
+          <label for="message">Message libre / précisions</label>
+          <textarea id="message" name="message" class="form-textarea" placeholder="Décrivez l'ambiance souhaitée, vos contraintes techniques, vos artistes de référence..."></textarea>
+        </div>
+
+        <div class="form-group full">
+          <label class="rgpd-row">
+            <input type="checkbox" id="rgpd" required/>
+            <span class="check-mark"></span>
+            <span>J'accepte que mes données soient utilisées dans le seul cadre de cette demande, conformément à la politique de confidentialité. <span class="req">*</span></span>
+          </label>
+          <div class="field-error" data-for="rgpd"></div>
+        </div>
+
+        <div class="submit-row">
+          <button type="submit" class="btn-submit" id="submitBtn">
+            <span class="loader"></span>
+            <span class="btn-text">Envoyer ma demande</span>
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <div class="form-success" id="formSuccess">
+      <i class="fa-solid fa-circle-check"></i>
+      <h3>Demande envoyée</h3>
+      <p>Merci pour votre confiance. Je vous réponds personnellement sous 24h.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================
+     FOOTER
+     ========================================================== -->
+<footer>
+  <div class="footer-logo">SKR Events</div>
+  <div class="footer-zone">Lille · Reims · Paris &amp; International</div>
+
+  <div class="social-icons">
+    <a href="https://www.instagram.com/asker_dj" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://soundcloud.com/askerdj" target="_blank" rel="noopener" aria-label="SoundCloud"><i class="fa-brands fa-soundcloud"></i></a>
+    <a href="https://www.facebook.com/askerfr" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+  </div>
+
+  <div class="footer-links">
+    <a href="#">Mentions légales</a>
+    <a href="#">Politique de confidentialité</a>
+  </div>
+
+  <div class="footer-divider"></div>
+
+  <p class="footer-tagline">© 2026, 5 ans de passion et d'instants sonores inoubliables.</p>
+</footer>
+
+<script>
+/* ==========================================================
+   1. NAVIGATION, Scroll opacity + hamburger mobile
+   ========================================================== */
+const nav = document.getElementById('nav');
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 30) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+  hamburger.innerHTML = navLinks.classList.contains('open')
+    ? '<i class="fa-solid fa-xmark"></i>'
+    : '<i class="fa-solid fa-bars"></i>';
+});
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    hamburger.innerHTML = '<i class="fa-solid fa-bars"></i>';
+  });
+});
+
+/* ==========================================================
+   2. PARTICULES HERO, Canvas animé
+   ========================================================== */
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+class Particle {
+  constructor() {
+    this.reset();
+    this.y = Math.random() * canvas.height;
+  }
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = canvas.height + Math.random() * 50;
+    this.size = Math.random() * 1.8 + 0.3;
+    this.speedY = Math.random() * 0.4 + 0.1;
+    this.speedX = (Math.random() - 0.5) * 0.15;
+    this.opacity = Math.random() * 0.6 + 0.15;
+    this.flickerSpeed = Math.random() * 0.02;
+  }
+  update() {
+    this.y -= this.speedY;
+    this.x += this.speedX;
+    this.opacity += (Math.random() - 0.5) * this.flickerSpeed;
+    this.opacity = Math.max(0.05, Math.min(0.75, this.opacity));
+    if (this.y < -10) this.reset();
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(201, 168, 76, ${this.opacity})`;
+    ctx.shadowBlur = 8;
+    ctx.shadowColor = 'rgba(201, 168, 76, 0.6)';
+    ctx.fill();
+    ctx.shadowBlur = 0;
+  }
+}
+
+function initParticles() {
+  particles = [];
+  const count = Math.min(80, Math.floor(canvas.width / 18));
+  for (let i = 0; i < count; i++) particles.push(new Particle());
+}
+initParticles();
+window.addEventListener('resize', initParticles);
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+/* ==========================================================
+   3. TESTIMONIALS MARQUEE, Duplication pour boucle infinie
+   ========================================================== */
+const track = document.getElementById('testimonialsTrack');
+if (track) {
+  const cards = Array.from(track.children);
+  cards.forEach(card => {
+    const clone = card.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    track.appendChild(clone);
+  });
+}
+
+/* ==========================================================
+   3b. LOGOS MARQUEE, Duplication pour boucle infinie
+   ========================================================== */
+const logosTrack = document.getElementById('logosTrack');
+if (logosTrack) {
+  const logos = Array.from(logosTrack.children);
+  logos.forEach(logo => {
+    const clone = logo.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    logosTrack.appendChild(clone);
+  });
+}
+
+/* ==========================================================
+   3c. GALERIE MARQUEE, Duplication x3 (peu de photos)
+   ========================================================== */
+const galleryTrack = document.getElementById('galleryTrack');
+if (galleryTrack) {
+  const photos = Array.from(galleryTrack.children);
+  // On duplique 3x pour un défilement fluide et suffisant
+  for (let i = 0; i < 3; i++) {
+    photos.forEach(photo => {
+      const clone = photo.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      galleryTrack.appendChild(clone);
+    });
+  }
+}
+
+/* ==========================================================
+   4. REVEAL AU SCROLL, IntersectionObserver
+   ========================================================== */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ==========================================================
+   5. FORMULAIRE, Validation + soumission simulée
+   ========================================================== */
+const form = document.getElementById('bookingForm');
+const submitBtn = document.getElementById('submitBtn');
+const formSuccess = document.getElementById('formSuccess');
+
+function setError(field, msg) {
+  const err = document.querySelector(`.field-error[data-for="${field.name || field.id}"]`);
+  if (err) err.textContent = msg || '';
+  if (msg) { field.classList.add('invalid'); field.classList.remove('valid'); }
+  else { field.classList.remove('invalid'); field.classList.add('valid'); }
+}
+
+// Validation temps réel sur blur
+['fullname','email','phone','eventType','eventDate','eventLocation','guests','duration'].forEach(id => {
+  const f = document.getElementById(id);
+  f.addEventListener('blur', () => validateField(f));
+  f.addEventListener('input', () => {
+    if (f.classList.contains('invalid')) validateField(f);
+  });
+});
+
+function validateField(f) {
+  const v = (f.value || '').trim();
+  if (!v) { setError(f, 'Champ requis'); return false; }
+  if (f.id === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) {
+    setError(f, 'Email invalide'); return false;
+  }
+  if (f.id === 'phone' && v.replace(/\D/g,'').length < 8) {
+    setError(f, 'Téléphone invalide'); return false;
+  }
+  setError(f, '');
+  return true;
+}
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  let valid = true;
+  ['fullname','email','phone','eventType','eventDate','eventLocation','guests','duration'].forEach(id => {
+    if (!validateField(document.getElementById(id))) valid = false;
+  });
+  const rgpd = document.getElementById('rgpd');
+  if (!rgpd.checked) {
+    const err = document.querySelector('.field-error[data-for="rgpd"]');
+    if (err) err.textContent = 'Vous devez accepter pour envoyer la demande';
+    valid = false;
+  } else {
+    document.querySelector('.field-error[data-for="rgpd"]').textContent = '';
+  }
+  if (!valid) {
+    // scroll au premier champ invalide
+    const firstInvalid = form.querySelector('.invalid');
+    if (firstInvalid) firstInvalid.focus({ preventScroll: false });
+    return;
+  }
+
+  // Soumission simulée (animation loader)
+  submitBtn.classList.add('loading');
+  submitBtn.disabled = true;
+  submitBtn.querySelector('.btn-text').textContent = 'Envoi en cours...';
+
+  setTimeout(() => {
+    form.style.display = 'none';
+    formSuccess.classList.add('visible');
+  }, 1400);
+});
+</script>
+
+</body>
+</html>
