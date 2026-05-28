@@ -399,29 +399,24 @@
   /* ==========================================================
      BADGES DE RÉASSURANCE
      ========================================================== */
+  /* --- Desktop : grille statique --- */
   .reassurance {
     background: var(--noir-2);
-    padding: 5rem 0;
+    padding: 5rem 1.5rem;
     border-top: 1px solid rgba(201, 168, 76, 0.08);
     border-bottom: 1px solid rgba(201, 168, 76, 0.08);
-    overflow: hidden;
   }
-  .badges-viewport {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
-    mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
-  }
+  .badges-viewport { width: 100%; }
   .badges-track {
-    display: flex;
-    gap: 4rem;
-    width: max-content;
-    animation: marqueeRTL 35s linear infinite;
-    align-items: center;
-    will-change: transform;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+    max-width: 1280px;
+    margin: 0 auto;
+    animation: none;
   }
-  .badges-track:hover { animation-play-state: paused; }
+  /* Cacher les clones sur desktop */
+  .badges-track [aria-hidden="true"] { display: none; }
   .badge-item {
     display: flex;
     flex-direction: column;
@@ -429,8 +424,6 @@
     text-align: center;
     gap: 1rem;
     padding: 0.5rem;
-    flex-shrink: 0;
-    min-width: 180px;
   }
   .badge-icon {
     width: 52px;
@@ -1204,6 +1197,31 @@
       grid-template-columns: 1fr;
       gap: 0.75rem;
     }
+
+    /* Badges : marquee RTL sur mobile */
+    .reassurance {
+      padding: 4rem 0;
+      overflow: hidden;
+    }
+    .badges-viewport {
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+      mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    }
+    .badges-track {
+      display: flex;
+      grid-template-columns: unset;
+      max-width: unset;
+      margin: 0;
+      gap: 3.5rem;
+      width: max-content;
+      animation: marqueeRTL 35s linear infinite;
+      align-items: center;
+      will-change: transform;
+    }
+    .badges-track:hover { animation-play-state: paused; }
+    .badges-track [aria-hidden="true"] { display: flex; }
+    .badge-item { flex-shrink: 0; min-width: 160px; }
 
     /* Témoignages : swipe manuel gauche ↔ droite */
     .marquee-viewport {
