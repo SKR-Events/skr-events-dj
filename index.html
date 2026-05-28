@@ -401,17 +401,27 @@
      ========================================================== */
   .reassurance {
     background: var(--noir-2);
-    padding: 5rem 1.5rem;
+    padding: 5rem 0;
     border-top: 1px solid rgba(201, 168, 76, 0.08);
     border-bottom: 1px solid rgba(201, 168, 76, 0.08);
+    overflow: hidden;
   }
-  .badges-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 2.5rem 2rem;
-    max-width: 1280px;
-    margin: 0 auto;
+  .badges-viewport {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
   }
+  .badges-track {
+    display: flex;
+    gap: 4rem;
+    width: max-content;
+    animation: marqueeRTL 35s linear infinite;
+    align-items: center;
+    will-change: transform;
+  }
+  .badges-track:hover { animation-play-state: paused; }
   .badge-item {
     display: flex;
     flex-direction: column;
@@ -419,6 +429,8 @@
     text-align: center;
     gap: 1rem;
     padding: 0.5rem;
+    flex-shrink: 0;
+    min-width: 180px;
   }
   .badge-icon {
     width: 52px;
@@ -1194,24 +1206,6 @@
       gap: 0.75rem;
     }
 
-    /* Badges : ligne horizontale scrollable */
-    .badges-grid {
-      display: flex;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      gap: 1rem;
-      padding-bottom: 0.5rem;
-      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
-      mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
-    }
-    .badges-grid::-webkit-scrollbar { display: none; }
-    .badge-item {
-      flex-shrink: 0;
-      min-width: 150px;
-    }
-
     /* Témoignages : swipe manuel gauche ↔ droite */
     .marquee-viewport {
       overflow-x: auto;
@@ -1279,31 +1273,13 @@
      BADGES DE RÉASSURANCE
      ========================================================== -->
 <section class="reassurance">
-  <div class="badges-grid">
-    <div class="badge-item reveal"><div class="badge-icon"><i class="fa-solid fa-headphones"></i></div><div class="badge-text">5 ans d'expérience</div></div>
-    <div class="badge-item reveal delay-1"><div class="badge-icon"><i class="fa-solid fa-globe"></i></div><div class="badge-text">Carrière à l'international</div></div>
-    <div class="badge-item reveal delay-2"><div class="badge-icon"><i class="fa-solid fa-star"></i></div><div class="badge-text">Avis vérifiés, noté 5/5</div></div>
-    <div class="badge-item reveal delay-3"><div class="badge-icon"><i class="fa-solid fa-trophy"></i></div><div class="badge-text">Artiste référencé événements corporate</div></div>
-    <div class="badge-item reveal delay-4"><div class="badge-icon"><i class="fa-solid fa-volume-high"></i></div><div class="badge-text">Matériel professionnel haut de gamme</div></div>
-  </div>
-</section>
-
-<!-- ==========================================================
-     LOGOS PARTENAIRES, Bandeau défilant (remplace destinations)
-     ========================================================== -->
-<section class="logos-marquee">
-  <div class="logos-viewport">
-    <div class="logos-track" id="logosTrack">
-      <!-- Wordmarks clients (à remplacer par les vrais logos quand fournis) -->
-      <div class="logo-item">DECATHLON</div>
-      <div class="logo-item">Leroy Merlin</div>
-      <div class="logo-item">LOSC<span class="brand-sub">LILLE</span></div>
-      <div class="logo-item">Mercedes-Benz</div>
-      <div class="logo-item">BMW</div>
-      <div class="logo-item">Orange</div>
-      <div class="logo-item">L'Oréal</div>
-      <div class="logo-item">Société Générale</div>
-      <div class="logo-item">Veuve Clicquot</div>
+  <div class="badges-viewport">
+    <div class="badges-track" id="badgesTrack">
+      <div class="badge-item"><div class="badge-icon"><i class="fa-solid fa-headphones"></i></div><div class="badge-text">5 ans d'expérience</div></div>
+      <div class="badge-item"><div class="badge-icon"><i class="fa-solid fa-globe"></i></div><div class="badge-text">Carrière à l'international</div></div>
+      <div class="badge-item"><div class="badge-icon"><i class="fa-solid fa-star"></i></div><div class="badge-text">Avis vérifiés, noté 5/5</div></div>
+      <div class="badge-item"><div class="badge-icon"><i class="fa-solid fa-trophy"></i></div><div class="badge-text">Artiste référencé événements corporate</div></div>
+      <div class="badge-item"><div class="badge-icon"><i class="fa-solid fa-volume-high"></i></div><div class="badge-text">Matériel professionnel haut de gamme</div></div>
     </div>
   </div>
 </section>
@@ -1452,6 +1428,25 @@
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================
+     LOGOS PARTENAIRES, Bandeau défilant
+     ========================================================== -->
+<section class="logos-marquee">
+  <div class="logos-viewport">
+    <div class="logos-track" id="logosTrack">
+      <div class="logo-item">DECATHLON</div>
+      <div class="logo-item">Leroy Merlin</div>
+      <div class="logo-item">LOSC<span class="brand-sub">LILLE</span></div>
+      <div class="logo-item">Mercedes-Benz</div>
+      <div class="logo-item">BMW</div>
+      <div class="logo-item">Orange</div>
+      <div class="logo-item">L'Oréal</div>
+      <div class="logo-item">Société Générale</div>
+      <div class="logo-item">Veuve Clicquot</div>
     </div>
   </div>
 </section>
@@ -1767,6 +1762,19 @@ if (track) {
     const clone = card.cloneNode(true);
     clone.setAttribute('aria-hidden', 'true');
     track.appendChild(clone);
+  });
+}
+
+/* ==========================================================
+   3a2. BADGES MARQUEE, Duplication pour boucle infinie
+   ========================================================== */
+const badgesTrack = document.getElementById('badgesTrack');
+if (badgesTrack) {
+  const badges = Array.from(badgesTrack.children);
+  badges.forEach(badge => {
+    const clone = badge.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    badgesTrack.appendChild(clone);
   });
 }
 
